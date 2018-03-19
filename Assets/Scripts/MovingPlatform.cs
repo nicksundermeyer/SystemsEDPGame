@@ -5,15 +5,16 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
 
-    public float speed;
-    private bool moving;
-    private float startY;
+    public float distance;
+    public float speedX;
+    public float speedY;
+    public bool moving;
+    private Vector3 startPosition;
 
     // Use this for initialization
     void Start()
     {
-        float startY = transform.position.y;
-        moving = false;
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -21,7 +22,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (moving)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x + speedX, transform.position.y + speedY, transform.position.z);
+        }
+
+        if (Vector3.Magnitude(transform.position - startPosition) > distance)
+        {
+            speedX *= -1;
+            speedY *= -1;
         }
     }
 
