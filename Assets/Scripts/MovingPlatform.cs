@@ -34,6 +34,6 @@ public class MovingPlatform : MonoBehaviour
 
     void DoActivateTrigger()
     {
-        moving = true;
+        this.gameObject.SetActive(false);
     }
 }

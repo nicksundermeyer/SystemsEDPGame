@@ -72,6 +72,11 @@ namespace UnityStandardAssets._2D
                 {
                     m_Grounded = true;
                 }
+
+                if(colliders[i].CompareTag("Danger"))
+                {
+                    m_Rigidbody2D.transform.position = new Vector3(CheckPoint.GetActiveCheckPointPosition().x, m_Rigidbody2D.transform.position.y, m_Rigidbody2D.transform.position.z);
+                }
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
